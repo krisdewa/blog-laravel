@@ -5,7 +5,7 @@
 
     @if ($posts->count() > 0)
         <div class="card mb-3 text-center">
-            <img src="https://source.unsplash.com/1200x400/{{ $posts[0]->category->name }}" class="card-img-top" alt="...">
+            <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="">
             <div class="card-body">
                 <h3 class="card-title"><a class="text-decoration-none" href="/posts/{{ $posts[0]->slug }}">{{ $posts[0]->title }}</a></h3>
                 <p>
@@ -24,33 +24,30 @@
     @endif
 
 
-    @foreach ($posts as $post)    
-        {{-- <div class="card mb-1 border-bottom">
-            <div class="card-body shadow-sm p-4 bg-light rounded">
-                <h5 class="card-title"><a href="/posts/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a></h5>
-                <p>By KrisDewa in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p>
-                
-                <p class="card-text"> {{ $post->excerpt }} </p>
-
-                <a href="/posts/{{ $post->slug }}" class="text-decoration-none">Read more.....  </a>
-
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div> --}}
-
-        <article class="mb-3 border-bottom">
-            <h2>
-                <a href="/posts/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a>
-            </h2>
-
-            <p>By. <a href="/authors/{{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a> in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p>
-            
-            <p>{{ $post->excerpt }}</p>
-            <small>Created at {{ $post->created_at->diffForHumans() }}</small> <br>
-            
-            <a href="/posts/{{ $post->slug }}" class="text-decoration-none">Read more.....  </a>
-            <p></p>
-        </article>
-    @endforeach
-
+    <div class="container">
+        <div class="row">
+            @foreach ($posts->skip(1) as $post) 
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div 
+                            class="position-absolute px-3 py-2 text-white" 
+                            style="background-color: rgba(0, 0, 0, 0.3); border-radius: 2px;"
+                            ><a href="/categories/{{ $post->category->slug }}" class="text-white text-decoration-none"> {{ $post->category->name }} </a>
+                        </div>
+                        <img src="https://source.unsplash.com/500x300?{{ $post->category->name }}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $post->title }}</h5>
+                            <p>
+                                <small class="text-muted">
+                                    By. <a href="/authors/{{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a> in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a> on {{ $post->created_at->diffForHumans() }}
+                                </small>
+                            </p>
+                            <p class="card-text">{{ $post->excerpt }}</p>
+                            <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
