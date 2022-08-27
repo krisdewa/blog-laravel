@@ -18,6 +18,32 @@ class Post extends Model
     protected $guarded = ['id'];
     protected $with = ['author', 'category'];
 
+    public function scopeFilter($query, array $filters)
+    {
+        // query scope for search posts
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('title', 'like', '%' . $search . '%')
+                ->orWhere('body', 'like', '%' . $search . '%');
+        });
+
+        // query scope for category
+        $query->when($filters['category'] ?? false, function ($query, $category) {
+            return $query->whereHas('category', function ($query) use ($category) {
+                $query->where('slug', $category);
+            });
+        });
+
+        // query scope for author
+        $query->when(
+            $filters['author'] ?? false,
+            fn ($query, $author) => $query->whereHas(
+                'author',
+                fn ($query) => $query->where('username', $author)
+            )
+
+        );
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
