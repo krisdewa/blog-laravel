@@ -32,7 +32,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 - Factory & Faker
 - N+1 Problem
 - Searching & Pagination
-<!-- - User Registration -->
+- View & Controller User & Registration
 <!-- - User Login & Middleware -->
 <!-- - Dashboard UI -->
 <!-- - Create Post Form -->
