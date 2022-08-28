@@ -31,8 +31,23 @@
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
-            </li> --}}
+                </li> --}}
             </ul>
+
+            <ul class="navbar-nav ms-auto ">
+                <li class="nav-item">
+                    <a href="/login" class="nav-link btn btn-outline-danger {{ $active === 'login' ? 'active' : '' }}">
+                        Login
+                    </a>
+                </li>
+                <li class="nav-item ms-1">
+                    <a href="/register"
+                        class="nav-link btn btn-danger text-light {{ $active === 'register' ? 'active' : '' }}">
+                        Register
+                    </a>
+                </li>
+            </ul>
+
         </div>
     </div>
 </nav>
