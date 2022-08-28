@@ -21,6 +21,27 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## Learning, Implement Blog Laravel App & List Fiture App
+- Struktur Folder, Routes & View
+- Blade Templating Engine
+- Model, Collection & Controller
+- Database, Migration & Eloquent
+- Post Model
+- Post Category & Eloquent Relationship
+- Database Seeder
+- Factory & Faker
+- N+1 Problem
+- Searching & Pagination
+<!-- - User Registration -->
+<!-- - User Login & Middleware -->
+<!-- - Dashboard UI -->
+<!-- - Create Post Form -->
+<!-- - Validation & Insert Post -->
+<!-- - Update & Delete Post -->
+<!-- - Upload Image -->
+<!-- - Preview, Update & Delete Image -->
+<!-- - Authorization -->
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
